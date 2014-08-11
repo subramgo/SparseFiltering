@@ -10,12 +10,7 @@ from sklearn.svm import SVC
 from SparseFilter import *
 
 def load_data():
-    # Load the dataset
-    #data_diabetes = load_diabetes()
-    #X= data_diabetes['data']
-    #Y = data_diabetes['target']
     X,Y = make_classification(n_samples = 500,n_features=100)
-    
     return X,Y
 
 
@@ -28,7 +23,6 @@ def simple_model(X,Y):
     
     
 X,Y = load_data()
-
 acc = simple_model(X,Y)
 
 X_trans = sfiltering(X,25)
