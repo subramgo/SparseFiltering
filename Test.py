@@ -14,7 +14,7 @@ def load_data():
     #data_diabetes = load_diabetes()
     #X= data_diabetes['data']
     #Y = data_diabetes['target']
-    X,Y = make_classification(n_samples = 500,n_features=1000)
+    X,Y = make_classification(n_samples = 500,n_features=100)
     
     return X,Y
 
@@ -27,16 +27,15 @@ def simple_model(X,Y):
     return acc
     
     
-n_features = 100
 X,Y = load_data()
 
 acc = simple_model(X,Y)
 
-X_trans = sfiltering(X,50)
+X_trans = sfiltering(X,25)
 
 acc1= simple_model(X_trans,Y)
 
-X_trans1 = sfiltering(X_trans,50)
+X_trans1 = sfiltering(X_trans,10)
 
 acc2= simple_model(X_trans1,Y)
 
