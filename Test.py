@@ -27,8 +27,10 @@ def plot(data,no):
     pl.figure(no)
     pl.pcolor(data)
     pl.colorbar()
-#    pl.show()
-    
+    pl.show()
+
+
+pl.close('all')    
 
 X,Y = load_data()
 acc = simple_model(X,Y)
