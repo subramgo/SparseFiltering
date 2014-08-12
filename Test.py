@@ -8,6 +8,8 @@ from sklearn.datasets import make_classification
 from sklearn.metrics import accuracy_score
 from sklearn.svm import SVC
 from SparseFilter import *
+import pylab as pl
+
 
 def load_data():
     X,Y = make_classification(n_samples = 500,n_features=100)
@@ -21,9 +23,18 @@ def simple_model(X,Y):
     acc=  accuracy_score(Y,predict)
     return acc
     
+def plot(data,no):
+    pl.figure(no)
+    pl.pcolor(data)
+    pl.colorbar()
+#    pl.show()
     
+
 X,Y = load_data()
 acc = simple_model(X,Y)
+
+
+
 
 X_trans = sfiltering(X,25)
 
@@ -31,8 +42,13 @@ acc1= simple_model(X_trans,Y)
 
 X_trans1 = sfiltering(X_trans,10)
 
+
 acc2= simple_model(X_trans1,Y)
 
 print "Without sparsefiltering, accuracy = %f "%(acc)
 print "One Layer Accuracy, = %f, Increase = %f"%(acc1,acc1-acc)
 print "Two Layer Accuracy,  = %f, Increase = %f"%(acc2,acc2-acc1)
+
+plot(X.T,1)
+plot(X_trans1.T,2)
+pl.show()
